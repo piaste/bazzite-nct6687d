@@ -1,10 +1,8 @@
-FROM ghcr.io/ublue-os/bazzite:stable
+ARG BAZZITE_TAG
+FROM ghcr.io/ublue-os/bazzite:${BAZZITE_TAG}
 
-### MODIFICATIONS
-## make modifications desired in your image and install packages by modifying the build.sh script
-## the following RUN directive does all the things required to run "build.sh" as recommended.
-
-COPY --from=ghcr.io/ublue-os/akmods-extra:bazzite-41 /rpms/ /tmp/rpms
+ARG AKMODSEXTRA_TAG
+COPY --from=ghcr.io/ublue-os/akmods-extra:${AKMODSEXTRA_TAG} /rpms/ /tmp/rpms
 RUN find /tmp/rpms
 
 # add the ublue copr
