@@ -90,7 +90,7 @@ jobs:
         id: find_kernel_version
         run: |
           export BAZZITE_TAG=stable
-          export KERNEL_FLAVOR=bazzite
+          export KERNEL_FLAVOR=ogc
           export KERNEL_VERSION=$(skopeo inspect docker://ghcr.io/ublue-os/bazzite:$BAZZITE_TAG | jq -r .Labels.\"ostree.linux\")
           export FEDORA_MAJOR_VERSION=$(echo "$KERNEL_VERSION" | rev | cut -f2 -d. | rev | tr -d "fc")
 
